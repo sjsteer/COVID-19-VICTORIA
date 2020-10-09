@@ -98,7 +98,7 @@ try:
 except:
 	pass
 
-def covid_plot():
+def covid_plot(show_plot=False):
 	fig, axes = plt.subplots(2, figsize=(18, 12))
 
 	MAX_CASES = cleaned['net_cases'].max()
@@ -161,6 +161,7 @@ def covid_plot():
 	plt.suptitle(f"Victoria's COVID-19 over {DAYS} days\nLast updated {today}")
 	fig.savefig('victorian_covid_plot.png', bbox_inches="tight")
 
-	plt.show()
+	if show_plot:
+		plt.show()
 
 covid_plot()
