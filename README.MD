@@ -8,4 +8,4 @@ Data is pulled daily from [COVID Live](https://covidlive.com.au/report/daily-cas
 Here is an example of the plot generated:
 ![Example Plot](/victorian_covid_plot.png)
 
-You can also download the cleaned data set from [here](https://raw.githubusercontent.com/sjsteer/COVID-19-VICTORIA/master/exported_covid_data.csv)
+You can also download the cleaned data set from [here](https://raw.githubusercontent.com/sjsteer/COVID-19-VICTORIA/master/exported_covid_data.csv).
