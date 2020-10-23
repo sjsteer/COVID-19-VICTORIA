@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 # Web Scraping
 
 df = pd.read_html("https://covidlive.com.au/report/daily-cases/vic")[1]
-df.columns = ['Date', 'Total Cases', 'VAR', 'Net Cases']
-del df['VAR']
+del df['VAR'], df['NEW']
+df.columns = ['Date', 'Total Cases', 'Net Cases']
 df.head()
 
 #Data Cleaning
