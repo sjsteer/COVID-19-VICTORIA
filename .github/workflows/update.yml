@@ -1,0 +1,47 @@
+name: Update Plot
+
+# shell to use
+defaults:
+  run:
+    shell: bash
+
+# when we want to run the python file
+on:
+  # whenever master is pushed to
+  push:
+    branches: 
+      - master
+  # daily
+  schedule:
+    - cron: '0 23 * * *' #Runs daily at 11PM UTC - 10AM AEDT
+      
+jobs:
+  update:
+    name: Update Plot
+    runs-on: ubuntu-latest
+    steps:
+      # checkout the branch to prevent conflicts
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      
+      # installs python 3.8
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      
+      # install the required packages
+      - name: Install Packages
+        run: |
+          pip install pandas numpy seaborn matplotlib
+        
+      # run the python file
+      - name: Run
+        run: python main.py
+      
+      # commit the updated plot with message "Automatically update plot"
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automatically update plot
+        
