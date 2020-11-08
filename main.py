@@ -3,6 +3,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+from pytz import timezone
 
 # Web Scraping
 
@@ -116,9 +117,12 @@ def covid_plot(show_plot=False):
 	        color=colors[i],
 	        hatch='///' if lockdowns[i][3] else ''
 	    )
+
+	# use python (pytz) for timezones, GitHub Actions is kinda messy
+	now = datetime.now(timezone('Australia/Melbourne'))
 	    
 	# add a line for today
-	today_str = f'Today ({datetime.now().strftime("%b %d")})'
+	today_str = f'Today ({now.strftime("%b %d")})'
 	axes[0].axvline(datetime.now(), 0, MAX_CASES, label=today_str, color='red', alpha=0.75)
 	    
 	fig.legend(title='Lockdown Type', ncol=2, loc='upper right')
@@ -157,11 +161,10 @@ def covid_plot(show_plot=False):
 	axes[1].set_ylabel("14 day average")
 	axes[1].set_xlabel("Date")
 
-	today = datetime.now().strftime("%d/%m/%Y")
-	plt.suptitle(f"Victoria's COVID-19 over {DAYS} days\nLast updated {today}")
+	plt.suptitle(f"Victoria's COVID-19 over {DAYS} days\nLast updated {now.strftime('%d/%m/%Y')}")
 	fig.savefig('victorian_covid_plot.png', bbox_inches="tight")
 
 	if show_plot:
 		plt.show()
 
-covid_plot()
+covid_plot(True)
