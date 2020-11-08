@@ -33,7 +33,7 @@ jobs:
       # install the required packages
       - name: Install Packages
         run: |
-          pip install pandas numpy seaborn matplotlib
+          pip install pandas numpy seaborn matplotlib lxml
         
       # run the python file
       - name: Run
