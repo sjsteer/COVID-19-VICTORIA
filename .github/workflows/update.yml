@@ -20,6 +20,12 @@ jobs:
     name: Update Plot
     runs-on: ubuntu-latest
     steps:
+      # set timezone to Melbourne/Australa
+      - name: Setup Timezone
+        uses: actions/set-timezone-action@v1.1
+        with: 
+          timezoneLinux: "Australia/Melbourne"
+          
       # checkout the branch to prevent conflicts
       - name: Checkout Branch
         uses: actions/checkout@v2
