@@ -17,7 +17,7 @@ df.head()
 data = []
 for date, cum, net_cases, in zip(df['Date'], df['Total Cases'], df['Net Cases']):
     # format the date as YYYY-MM-DD
-    date = datetime.strptime(date + ' 2020', "%d %b %Y")
+    date = datetime.strptime(date, "%d %b %y")
     # add the row to the array
     data.append([date, cum, net_cases])
 
